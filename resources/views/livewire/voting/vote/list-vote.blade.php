@@ -51,7 +51,7 @@
                 </thead>
                 <tbody class="divide-y divide-gray-200">
                     @forelse($votes as $vote)
-                        <tr>
+                        <tr wire:key="vote-{{ $vote->id }}">
                             <!-- Foto -->
                             <td class="px-4 py-1 whitespace-nowrap">
                                 <img  
@@ -71,7 +71,6 @@
                             <!-- Partido / UF -->
                             <td class="px-4 py-1 whitespace-nowrap">
                                 <div class="text-gray-600">
-                                    {{-- Ajuste conforme sua model/relacionamento. Exemplo: --}}
                                     {{ $vote->senator->party->name ?? 'Sem Partido' }} 
                                     - {{ $vote->senator->uf }}
                                 </div>
@@ -120,6 +119,7 @@
                         </tr>
                     @endforelse
                 </tbody>
+
             </table>
         </div>
 
