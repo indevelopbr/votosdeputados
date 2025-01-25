@@ -1,0 +1,362 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+.wrap-votos {
+    --color-gray: #666;
+    --color-icon: #838384ff;
+    --color-voto-favor: #009C3B;
+    --color-voto-abstencoes: #FFC222;
+    --color-voto-contra: #BA1717;
+    --color-accent: rgb(8, 19, 64);
+    --color-sigla: rgb(25, 113, 62);
+    --bg-voto-favor: #daf7e2ff;
+    --bg-voto-abstencoes: #f4f3dcff;
+    --bg-voto-contra: #f7e4e4ff;
+    --grid-items: 1fr;
+    --card-flex-direction: column;
+    --wrap-cards-flex-direction: column;
+    --card-score-width: 100%;
+}
+
+@media (min-width: 468px) {
+    .wrap-votos {
+        --grid-items: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 768px) {
+    .wrap-votos {
+        --grid-items: repeat(3, 1fr);
+        --card-flex-direction: row;
+        --wrap-cards-flex-direction: row;
+        --card-score-width: 282px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .wrap-votos {
+        --grid-items: repeat(4, 1fr);
+    }
+}
+
+.wrap-votos .votos-a-favor {
+    --bg-icon: var(--color-voto-favor);
+    background-color: var(--bg-voto-favor);
+}
+
+.wrap-votos .votos-abstencoes {
+    --bg-icon: var(--color-voto-abstencoes);
+    background-color: var(--bg-voto-abstencoes);
+}
+
+.wrap-votos .votos-contra {
+    --bg-icon: var(--color-voto-contra);
+    background-color: var(--bg-voto-contra);
+}
+
+.wrap-votos section {
+    padding-bottom: 40px;
+    margin-bottom: 0;
+}
+
+.wrap-votos .votos-container {
+    display: flex;
+    width: 1140px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding-bottom: 40px;
+}
+
+.wrap-votos .placar-titulo {
+    margin-bottom: 40px;
+    font-size: 28px;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--color-gray);
+}
+
+.wrap-votos .tipo-titulo {
+    font-size: 34px;
+    text-align: center;
+    padding: 10px 0;
+    margin: 0 0 40px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+    color: white;
+}
+
+.wrap-votos .tipo-titulo::before,
+.wrap-votos .tipo-titulo::after {
+    content: "";
+    height: 3px;
+    display: block;
+    position: absolute;
+    background-color: var(--border-color-tipo-titulo);
+    left: 0;
+    right: 0;
+}
+
+.wrap-votos .tipo-titulo span:first-child {
+    border-right: 2px solid rgba(255, 255, 255, .2);
+    margin-right: 15px;
+    padding-right: 25px;
+}
+
+.wrap-votos .tipo-titulo::before {
+    top: 0;
+}
+
+.wrap-votos .tipo-titulo::after {
+    bottom: 0;
+}
+
+.wrap-votos .votos-a-favor .tipo-titulo {
+    --border-color-tipo-titulo: #1aff4aff;
+    background-color: var(--color-voto-favor);
+}
+
+.wrap-votos .votos-abstencoes .tipo-titulo {
+    --border-color-tipo-titulo: #ffff00ff;
+    background-color: var(--color-voto-abstencoes);
+}
+
+.wrap-votos .votos-contra .tipo-titulo {
+    --border-color-tipo-titulo: #ff0000ff;
+    background-color: var(--color-voto-contra);
+}
+
+.mapa {
+    flex-wrap: wrap;
+}
+
+.mapa a.mapa-brasil {
+    border-right: 2px solid #eee;
+    padding-right: 25px;
+}
+
+.mapa .mapa-regioes {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    gap: 35px;
+}
+
+.mapa .mapa-regioes a {
+    display: grid;
+    text-align: center;
+    text-transform: uppercase;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--color-gray);
+}
+
+.mapa .mapa-regioes a svg {
+    margin: 0 auto;
+}
+
+.mapa .mapa-regioes a svg {
+    height: 130px;
+    width: auto;
+    transition: all .3s linear;    
+}
+
+.mapa .mapa-regioes a svg * {
+    fill: var(--color-gray) !important;
+    stroke: #fff !important;
+}
+
+.mapa .mapa-regioes > a:hover svg,
+.mapa .mapa-regioes .active svg {
+    filter: drop-shadow(-3px 10px 1px var(--color-sigla));
+}
+
+.mapa .mapa-regioes > a:hover svg *,
+.mapa .mapa-regioes .active svg * {
+    fill: #00a650ff !important;
+}
+
+.wrap-votos .card.votos-a-favor {
+    --bg-color: var(--color-voto-favor);
+}
+
+.wrap-votos .card.votos-abstencoes {
+    --bg-color: var(--color-voto-abstencoes);
+}
+
+.wrap-votos .card.votos-contra {
+    --bg-color: var(--color-voto-contra);
+}
+
+.wrap-votos .cards .card[class*=votos-] {
+    font-family: "Poppins", sans-serif;
+    background-image: linear-gradient(-30deg, transparent 65%, transparent 1px, rgba(255, 255, 255, .3) 35%);
+    background-repeat: no-repeat;
+    background-color: var(--bg-color);
+    width: var(--card-score-width);
+    max-width: 100%;
+    border-radius: 26px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    color: white;
+    flex-direction: var(--card-flex-direction);
+    padding: 4px 8px;
+    gap: 15px;
+    border: 2px solid #ddd;
+}
+
+.wrap-votos .cards .card[class*=votos-] > :first-child {
+    border-right: 1px solid rgba(221, 221, 221, .6);
+}
+
+.wrap-votos .cards .card[class*=votos-] > * {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+
+.wrap-votos .cards {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-direction: var(--wrap-cards-flex-direction);
+    flex-wrap: wrap;
+}
+
+.wrap-votos .numero {
+    font-size: 64px;
+    line-height: 64px;
+    font-weight: bold;
+    text-align: center;
+    padding-right: 10px;
+    justify-content: center;
+}
+
+.wrap-votos .titulo {
+    font-size: 15px;
+    padding: 0 10px;
+}
+
+.wrap-votos .parlamentares {
+    display: grid;
+    grid-template-columns: var(--grid-items);
+}
+
+.wrap-votos .parlamentares .parlamentar {
+    background-color: #d8d8d8ff;
+    border: 10px solid white;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    display: flex;
+}
+
+.wrap-votos .parlamentar .social-midia {
+    margin: 20px 0;
+    padding: 0 40px;
+    vertical-align: middle;
+    justify-content: space-around;
+    align-items: center;
+    display: flex;
+    gap: 10px;   
+    width: 100%;
+
+}
+
+.wrap-votos .parlamentar .social-midia a {
+    background-color: var(--color-icon);
+    width: 35px;
+    height: 35px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.wrap-votos .parlamentar .social-midia a i,
+.wrap-votos .parlamentar .social-midia a svg {
+    width: 16px;
+    font-size: 16px;
+    color: white;
+    fill: white;
+}
+
+.wrap-votos .parlamentar .sigla {
+    font-size: 13px;
+    font-family: Poppins, sans-serif;
+    margin-bottom: 10px;
+}
+
+.wrap-votos .parlamentar .titulo {
+    font-size: 20px;
+    font-family: Poppins, sans-serif;
+    color: var(--color-gray);
+    margin-top: 10px;
+}
+
+.wrap-votos .parlamentar {
+    border: 1px solid rgb(221, 221, 221);
+    padding-bottom: 15px;
+}
+
+.wrap-votos .parlamentar .imagem {
+    padding-top: 20px;
+    background-color: var(--bg-icon);
+    display: flex;
+}
+
+.wrap-votos .parlamentar .icone {
+    background-color: var(--bg-icon);
+    width: 30px;
+    aspect-ratio: 1/1;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2px;
+    border-radius: 999px;
+}
+
+.wrap-votos .modal {
+    position: fixed;
+    inset: 0;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    background-color: rgb(0, 0, 0, .1);
+    display: none;
+}
+
+.wrap-votos .modal.open {
+    display: flex;
+}
+
+.wrap-votos .modal .modal-inner {
+    background-color: white;
+    border: 1px solid #eee;
+    box-shadow: 3px 3px 3px rgb(0, 0, 0, .1), -1px -1px 4px rgb(6, 6, 6, .1);
+    display: flex;
+    padding: 15px;
+    width: 500px;
+    min-height: 300px;
+    max-width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.wrap-votos .modal .modal-inner [data-toggle-modal] {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.wrap-votos .modal .modal-inner h3{
+    color: var(--color-gray);
+}
