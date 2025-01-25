@@ -37,7 +37,7 @@ class ListVote extends Component
         // Se a propriedade iniciada é algo como "voto.XXX"
         if ($exploded[0] === 'voto') {
             // Extrai o ID do Vote
-            $voteId = $exploded[1];
+            $voteId = (int) $exploded[1];
 
             $vote = Vote::find($voteId);
             if ($vote) {
