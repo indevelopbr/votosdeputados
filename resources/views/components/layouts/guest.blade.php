@@ -4,8 +4,8 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="profile" href="https://gmpg.org/xfn/11">
-        <link rel="preload" href="{{ asset('assets/images/foto-moraes.png') }}" as="image">
-        <title>{{ config('app.name') . $title }}</title>
+        <link rel="preload" href="{{ strpos($title, 'Lula') !== false ? asset('assets/images/lula.png') : asset('assets/images/foto-moraes.png') }}" as="image">
+        <title>{{ config('app.name') . ' - ' . $title }}</title>
         <meta name="robots" content="max-image-preview:large">
         <link rel="stylesheet" href="{{ asset('assets/css/header-footer-elementor.css?ver=1.6.42') }}" media="all">
         <link rel="stylesheet" href="{{ asset('assets/css/frontend.min.css?ver=3.24.4') }}" media="all">
@@ -362,7 +362,7 @@
 				            <div class="elementor-element elementor-element-3ac498e elementor-widget elementor-widget-heading" data-id="3ac498e" data-element_type="widget" data-widget_type="heading.default">
 				                <div class="elementor-widget-container">
 			                        <h2 class="elementor-heading-title elementor-size-default">
-                                        {{ __('Impeachment de Alexandre de Moraes') }}
+                                        {{ $title }}
                                     </h2>
                                 </div>
 				            </div>
@@ -372,7 +372,7 @@
 			            <div class="elementor-widget-wrap elementor-element-populated">
 						    <div class="elementor-element elementor-element-ad36cfc elementor-widget elementor-widget-image" data-id="ad36cfc" data-element_type="widget" data-widget_type="image.default">
 				                <div class="elementor-widget-container">
-                                    <img src="{{ asset('assets/images/foto-moraes.png') }}" title="foto-moraes" alt="foto-moraes" loading="lazy">
+                                    <img src="{{ strpos($title, 'Lula') !== false ? asset('assets/images/lula.png') : asset('assets/images/foto-moraes.png') }}" title="foto-moraes" alt="foto-moraes" loading="lazy">
                                 </div>
                             </div>
                         </div>
@@ -389,7 +389,7 @@
                 <div class="e-con-inner">
 				    <div class="elementor-element elementor-element-b04cafc elementor-widget elementor-widget-heading" data-id="b04cafc" data-element_type="widget" data-widget_type="heading.default">
 				        <div class="elementor-widget-container">
-			                <h2 class="elementor-heading-title elementor-size-default">Conheça a posição do seu deputado federal no Impeachment de Alexandre de Moraes</h2>
+			                <h2 class="elementor-heading-title elementor-size-default">Conheça a posição do seu deputado federal no {{ $title }}</h2>
                         </div>
 				    </div>
 				    <div class="elementor-element elementor-element-1239397 elementor-align-center elementor-tablet-align-center elementor-widget elementor-widget-button" data-id="1239397" data-element_type="widget" data-widget_type="button.default">

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Livewire\Component;
 
-class Home extends Component
+class HomeTwo extends Component
 {
     public $selectedUf;
 
@@ -24,8 +24,8 @@ class Home extends Component
     public function render()
     {
         // Obtém a votação do cache ou busca no banco
-        $voting = Cache::remember('voting', 60, function () {
-            return Voting::with(['votes.senator.party'])->first();
+        $voting = Cache::remember('voting_two', 60, function () {
+            return Voting::with(['votes.senator.party'])->where('id', 2)->first();
         });
 
         // Verifica se há uma votação disponível
@@ -56,6 +56,7 @@ class Home extends Component
         $against = $filteredVotes->where('vote', 'N')->sortBy(fn($vote) => $vote->senator->name ?? '');
 
         return view('livewire.home', [
+            'title'      => $voting->name,
             'voting'     => $voting,
             'inFavor'    => $inFavor,
             'indefinite' => $indefinite,

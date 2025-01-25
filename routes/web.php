@@ -2,6 +2,7 @@
 
 use App\Livewire\Auth\EditarVoto;
 use App\Livewire\Home;
+use App\Livewire\HomeTwo;
 use App\Livewire\Partidos;
 use App\Livewire\Senator\CreateOrEditSenator;
 use App\Livewire\Senator\ListSenators;
@@ -18,6 +19,7 @@ Route::middleware(['auth', 'verified'])->prefix('cms')->group(function () {
 });
 
 Route::get('/', Home::class)->name('home');
+Route::get('/impeachment-de-lula', HomeTwo::class)->name('home.two');
 Route::get('/partidos', Partidos::class)->name('partidos');
 
 Route::view('dashboard', 'dashboard')

@@ -1,6 +1,6 @@
 <div>
     <div class="page-header">
-        <h1 class="entry-title">{{ __('Impeachment de Alexandre de Moraes') }}</h1>
+        <h1 class="entry-title">{{ $title }}</h1>
     </div>
     <div class="page-content">
         <div data-elementor-type="wp-page" data-elementor-id="807" class="elementor elementor-807" data-elementor-post-type="page">
