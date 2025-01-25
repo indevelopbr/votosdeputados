@@ -215,7 +215,7 @@ class DeputadosServices
             return Storage::disk('public')->url($fullPath);
     
         } catch (\Exception $e) {
-            dd($e->getMessage());
+            return null;
         }
     
         return null;
