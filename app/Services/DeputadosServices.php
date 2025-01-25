@@ -11,13 +11,13 @@ use Intervention\Image\Drivers\Gd\Driver;
 use Intervention\Image\Encoders\AutoEncoder;
 use Intervention\Image\ImageManager;
 
-class SenadorServices
+class DeputadosServices
 {
     public $url;
 
     public function __construct()
     {
-        $this->url = env('SENADO_DADOSABERTOS_URL'); 
+        $this->url = env('DEPUTADOS_DADOSABERTOS_URL'); 
     }
 
     public function get($url = null, $uri = null)
@@ -45,53 +45,47 @@ class SenadorServices
         return $response;
     }
 
-    public function getPartidos()
+    public function getPartidos($link = null)
     {
-        $response = $this->get(null, 'senador/partidos');
+        if (!$link) {
+            $response = $this->get(null, '/api/v2/partidos?ordem=ASC&ordenarPor=sigla');
+        } else {
+            $response = $this->get($link, null);
+        }
 
-        return $response;
+        return json_decode($response, true);
     }
 
-    public function updatePartidos()
+    public function updatePartidos($link = null)
     {
         try {
-            $partidos = json_decode($this->getPartidos(), true)['ListaPartidos']['Partidos']['Partido'];
+            $response = $this->getPartidos($link);
+            $partidos = $response['dados'];
+
+            $linkNext = null;
+
+            foreach ($response['links'] as $link) {
+                if ($link['rel'] === 'next') {
+                    $linkNext = $link['href'];
+                }
+            }
 
             foreach ($partidos as $item) {
-
-                if (!($item['DataExtincao'] ?? false)) {
-                    if ($item['Sigla'] != 'S/Partido') {
-                        // Muda a sigla para o formato sem acentos e caracteres especiais
-                        $sigla = iconv('UTF-8', 'ASCII//TRANSLIT', $item['Sigla']);
-                        $sigla = preg_replace('/[^a-zA-Z0-9]/', '', $sigla);
-                        
-                        $tempPartido = json_decode($this->get("https://dadosabertos.camara.leg.br/api/v2/partidos?sigla={$sigla}&ordem=ASC&ordenarPor=sigla"), true)['dados'];
-                        $tempPartido = json_decode($this->get($tempPartido[0]['uri'] ?? null), true)['dados'] ?? [];
-
-                        // Baixar imagem e salvar no storage
-                        $logoUrl = $tempPartido['urlLogo'] ?? '';
-                        $logoPath = null;
-
-                        if ($logoUrl) {
-                            $logoPath = $this->downloadImageLogoPartido($logoUrl, $item['Sigla']);
-                        }
-                    }
-                }
-
                 $partido = Party::updateOrCreate([
-                    'id' => $item['Codigo']
+                    'id' => $item['id']
                 ]);
 
                 $partido->update([
-                    'name'              => $item['Nome'] ?? '',
-                    'acronym'           => $item['Sigla'] ?? null,
-                    'image_logo'        => $logoPath ?? null,
-                    'foundation_date'   => $item['DataCriacao'] ?? null,
-                    'data_extincao'     => $item['DataExtincao'] ?? null,
+                    'name'              => $item['nome'] ?? '',
+                    'acronym'           => $item['sigla'] ?? null,
                 ]);
                 $partido->save();
 
-                echo "Partido {$item['Sigla']} atualizado com sucesso!\n";
+                echo "Partido {$item['sigla']} atualizado com sucesso!\n";
+            }
+
+            if ($linkNext) {
+                $this->updatePartidos($linkNext);
             }
         } catch (\Exception $e) {
             echo $e->getMessage();
@@ -117,52 +111,69 @@ class SenadorServices
         return null;
     }
 
-    public function getSenadoresAtual()
+    public function getDeputadosAtual($link = null)
     {
-        $response = $this->get(null, 'senador/lista/atual');
+        if (!$link) {
+            $response = $this->get(null, '/api/v2/deputados?ordem=ASC&ordenarPor=id');
+        } else {
+            $response = $this->get($link, null);
+        }
 
-        return $response;
+        return json_decode($response, true);
     }
 
-    public function updateSenadoresAtual()
+    public function updateDeputadosAtual()
     {
         try {
-            $senadores = json_decode($this->getSenadoresAtual(), true)['ListaParlamentarEmExercicio']['Parlamentares']['Parlamentar'];
+            $deputados = $this->getDeputadosAtual()['dados'];
 
-            foreach ($senadores as $item) {
-                $senador = $item['IdentificacaoParlamentar'];
+            foreach ($deputados as $deputado) {
+                $deputado = json_decode($this->get($deputado['uri']), true)['dados'];
 
-                if (($senador['UrlFotoParlamentar'] ?? '') != '') {
-                    $imagePath = $this->downloadImageSenador($senador['UrlFotoParlamentar'] ?? '', $senador['SiglaPartidoParlamentar'] ?? '', $senador['NomeParlamentar'] ?? '');
+                if (($deputado['ultimoStatus']['urlFoto'] ?? '') != '') {
+                    $imagePath = $this->downloadImageSenador($deputado['ultimoStatus']['urlFoto'] ?? '', $deputado['ultimoStatus']['siglaPartido'] ?? '', $senador['ultimoStatus']['nomeEleitoral'] ?? '');
                 }
 
-                $sigla = iconv('UTF-8', 'ASCII//TRANSLIT', $senador['SiglaPartidoParlamentar'] ?? '');
-                $sigla = preg_replace('/[^a-zA-Z0-9]/', '', $sigla);
+                $party = Party::where('acronym', $deputado['ultimoStatus']['siglaPartido'])->first();
 
-                $party = Party::where('acronym', $sigla)->first();
-
-                $newSenador = Senator::updateOrCreate([
-                    'id'            => (int) ($senador['CodigoParlamentar'] ?? 0),
+                $newDeputado = Senator::updateOrCreate([
+                    'id'            => (int) ($deputado['id'] ?? 0),
                     'party_id'      => $party->id ?? null,
                 ]);
 
-                $newSenador->update([
-                    'name'                  => $senador['NomeParlamentar'],
-                    'email'                 => $senador['EmailParlamentar'],
-                    //'birth_date'            => $item['DadosBasicosParlamentar']['DataNascimento'],
-                    'phone'                 => '+5561' . $senador['Telefones']['Telefone'][0]['NumeroTelefone'],
-                    'uf'                    => $senador['UfParlamentar'],
-                    'image_profile'         => $imagePath ?? '',
-                    'facebook'              => null,
-                    'instagram'             => null,
-                    'twitter'               => null,
-                    'site'                  => null,
-                    'birth_date'            => null,
-                    're_election'           => $this->getFimMandado($item['Mandato']),
-                ]);
-                $newSenador->save();
+                $facebook = null;
+                $instagram = null;
+                $twitter = null;
 
-                echo "Senador {$newSenador->name} atualizado com sucesso!\n";
+                foreach ($deputado['redeSocial'] as $item) {
+                    if (strpos($item, 'facebook') !== false) {
+                        $facebook = $item;
+                    } else if (strpos($item, 'instagram') !== false) {
+                        $instagram = $item;
+                    } else if (strpos($item, 'twitter') !== false) {
+                        $twitter = $item;
+                    } else if (strpos($item, 'x') !== false) {
+                        $twitter = $item;
+                    }
+                }
+
+                $newDeputado->update([
+                    'name'                  => $deputado['ultimoStatus']['nomeEleitoral'],
+                    'email'                 => $deputado['ultimoStatus']['gabinete']['email'],
+                    //'birth_date'            => $item['DadosBasicosParlamentar']['DataNascimento'],
+                    'phone'                 => '+5561' . str_replace(['(', ')', '-', ' '], '', $deputado['ultimoStatus']['gabinete']['telefone']),
+                    'uf'                    => $deputado['ultimoStatus']['siglaUf'] ?? '',
+                    'image_profile'         => $imagePath ?? '',
+                    'facebook'              => $facebook ?? '',
+                    'instagram'             => $instagram ?? '',
+                    'twitter'               => $twitter ?? '',
+                    'site'                  => '',
+                    'birth_date'            => null,
+                    're_election'           => '2026-01-01',
+                ]);
+                $newDeputado->save();
+
+                echo "Senador {$newDeputado->name} atualizado com sucesso!\n";
             }
         } catch (\Exception $e) {
             dd($e->getMessage());
@@ -285,8 +296,9 @@ class SenadorServices
 
     public function initUpdate()
     {
-        //$this->updatePartidos();
-        $this->updateSenadoresAtual();
+        $this->updatePartidos(null);
+        $this->updateDeputadosAtual();
+        //$this->updateSenadoresAtual();
 
         //foreach ($senadores as $senador) {
         //    $this->updateVotacoesSenador($senador->id);

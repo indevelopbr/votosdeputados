@@ -12,9 +12,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware(['auth', 'verified'])->prefix('cms')->group(function () {
     Route::get('/votacoes', ListVotings::class)->name('votacoes');
     Route::get('/votacoes/{voting}/votos', ListVote::class)->name('votacoes.votos');
-    Route::get('/senadores', ListSenators::class)->name('senadores');
-    Route::get('/senadores/novo', CreateOrEditSenator::class)->name('senadores.novo');
-    Route::get('/senadores/{senator}/editar', CreateOrEditSenator::class)->name('senadores.editar');
+    Route::get('/deputados', ListSenators::class)->name('senadores');
+    Route::get('/deputados/novo', CreateOrEditSenator::class)->name('senadores.novo');
+    Route::get('/deputados/{senator}/editar', CreateOrEditSenator::class)->name('senadores.editar');
 });
 
 Route::get('/', Home::class)->name('home');

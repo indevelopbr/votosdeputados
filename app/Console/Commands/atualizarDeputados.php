@@ -2,17 +2,17 @@
 
 namespace App\Console\Commands;
 
-use App\Services\SenadorServices;
+use App\Services\DeputadosServices;
 use Illuminate\Console\Command;
 
-class atualizarSenadores extends Command
+class atualizarDeputados extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'app:atualizar-senadores';
+    protected $signature = 'app:atualizar-deputados';
 
     /**
      * The console command description.
@@ -26,8 +26,8 @@ class atualizarSenadores extends Command
      */
     public function handle()
     {
-        $senadorServices = new SenadorServices();
+        $deputadosService = new DeputadosServices();
         
-        $senadorServices->initUpdate();
+        $deputadosService->initUpdate();
     }
 }
