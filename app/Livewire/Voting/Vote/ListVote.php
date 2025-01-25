@@ -64,7 +64,9 @@ class ListVote extends Component
         }
         if ($this->filterParty) {
             $query->whereHas('senator', function ($q) {
-                $q->where('party', 'like', '%'.$this->filterParty.'%');
+                $q->whereHas('party', function ($q1) {
+                    $q1->where('name', 'like', '%'.$this->filterParty.'%');
+                });
             });
         }
         if ($this->filterUf) {
