@@ -79,7 +79,7 @@
 
                             <!-- Grupo de rádio: A FAVOR / Indefinido / Contra -->
                             <td class="px-4 py-1 whitespace-nowrap">
-                                <div class="flex items-center space-x-4" wire:ignore>
+                                <div class="flex items-center space-x-4">
                                     <label class="inline-flex items-center">
                                         <input
                                             type="radio"
