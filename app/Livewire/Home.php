@@ -56,6 +56,7 @@ class Home extends Component
         $against = $filteredVotes->where('vote', 'N')->sortBy(fn($vote) => $vote->senator->name ?? '');
 
         return view('livewire.home', [
+            'title'      => $voting->name,
             'voting'     => $voting,
             'inFavor'    => $inFavor,
             'indefinite' => $indefinite,
