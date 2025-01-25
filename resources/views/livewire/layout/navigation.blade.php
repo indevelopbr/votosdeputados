@@ -36,8 +36,8 @@ new class extends Component
                     <x-nav-link :href="route('votacoes')" :active="request()->routeIs(['votacoes', 'votacoes.votos'])" wire:navigate>
                         {{ __('Votações') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('Deputados')" :active="request()->routeIs(['senadores', 'votacoes.votos'])" wire:navigate>
-                        {{ __('Senadores') }}
+                    <x-nav-link :href="route('senadores')" :active="request()->routeIs(['senadores', 'votacoes.votos'])" wire:navigate>
+                        {{ __('Deputados') }}
                     </x-nav-link>
                 </div>
             </div>
