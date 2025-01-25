@@ -33,10 +33,11 @@ class ListVote extends Component
      */
     public function updated($property, $value)
     {
+        $exploded = explode('.', $property);
         // Se a propriedade iniciada é algo como "voto.XXX"
-        if (strpos($property, 'voto.') === 0) {
+        if ($exploded[0] === 'voto') {
             // Extrai o ID do Vote
-            $voteId = str_replace('voto.', '', $property);
+            $voteId = $exploded[1];
 
             $vote = Vote::find($voteId);
             if ($vote) {
