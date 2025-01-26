@@ -11,7 +11,7 @@
                             <div class="wrap-votos">
                                 <section class="mapa votos-container" style="margin-top: 3rem">
                                     <div class="mapa-regioes">
-                                        <a href="https://votosdeputados.com.br/" class="mapa-brasil active">
+                                        <a href="#" wire:click="selectedUfId('')" class="mapa-brasil active">
                                             <picture>
                                                 <x-icones.map-brazil />
                                             </picture>
@@ -55,7 +55,7 @@
                                         <a href="#inFavor" style="text-decoration: none;">
                                             <div class="card votos-a-favor">
                                                 <div class="titulo">{{ __('A FAVOR') }}</div>
-                                                <span class="numero" data-duration="2000" data-to-value="{{ $inFavor->count() }}" data-from-value="0" data-delimiter=",">
+                                                <span class="numero">
                                                     {{ $inFavor->count() }}
                                                 </span>
                                             </div>
@@ -63,7 +63,7 @@
                                         <a href="#indefinite" style="text-decoration: none;">
                                             <div class="card votos-abstencoes">
                                                 <div class="titulo">{{ __('INDEFINIDOS') }}</div>
-                                                <span class="numero" data-duration="2000" data-to-value="{{ $indefinite->count() }}" data-from-value="0" data-delimiter=",">
+                                                <span class="numero">
                                                     {{ $indefinite->count() }}
                                                 </span>
                                             </div>
@@ -71,7 +71,7 @@
                                         <a href="#against" style="text-decoration: none;">
                                             <div class="card votos-contra">
                                                 <div class="titulo">{{ __('CONTRA') }}</div>
-                                                <span class="numero" data-duration="2000" data-to-value="{{ $against->count() }}" data-from-value="0" data-delimiter=",">
+                                                <span class="numero">
                                                     {{ $against->count() }}
                                                 </span>
                                             </div>
@@ -82,14 +82,14 @@
                                     <h3 class="tipo-titulo">
                                         <span>{{ __('VOTOS A FAVOR') }}</span>
                                         <span>
-                                            <img decoding="async" src="{{ asset('assets/images/icon.png') }}">
+                                            <img src="{{ asset('assets/images/icon.png') }}" loading="lazy">
                                         </span>
                                     </h3>
                                     <div class="parlamentares votos-container">
                                         @foreach ($inFavor as $vote)
                                             <div class="parlamentar">
                                                 <div class="imagem">
-                                                    <img loading="lazy" decoding="async" src="{{$vote->senator->image_profile }}" width="99" height="120" alt="Avatar de Alan Rick">
+                                                    <img src="{{$vote->senator->image_profile }}" width="99" height="120" alt="{{ $vote->senator->name }}" loading="lazy">
                                                 </div>    
                                                 <div class="titulo">{{ $vote->senator->name }}</div>
                                                 <div class="titulo" style="margin: 0; font-weight: 700; font-size: 12px !important; text-transform: none !important;">
@@ -135,13 +135,15 @@
                                 <section class="votos votos-abstencoes" id="indefinidos">
                                     <h3 class="tipo-titulo">
                                         <span>{{ __('INDEFINIDOS') }}</span>
-                                        <span><img decoding="async" src="{{ asset('assets/images/icon.png') }}"></span>
+                                        <span>
+                                            <img src="{{ asset('assets/images/icon.png') }}" loading="lazy">
+                                        </span>
                                     </h3>
                                     <div class="parlamentares votos-container">
                                         @foreach ($indefinite as $vote)
                                             <div class="parlamentar">
                                                 <div class="imagem">
-                                                    <img loading="lazy" decoding="async" src="{{$vote->senator->image_profile }}" width="99" height="120" alt="Avatar de Alan Rick">
+                                                    <img src="{{$vote->senator->image_profile }}" width="99" height="120" alt="{{ $vote->senator->name }}" loading="lazy">
                                                 </div>    
                                                 <div class="titulo">{{ $vote->senator->name }}</div>
                                                 <div class="titulo" style="margin: 0; font-weight: 700; font-size: 12px !important; text-transform: none !important;">
@@ -186,16 +188,16 @@
                                 </section>
                                 <section class="votos votos-contra" id="contra">
                                     <h3 class="tipo-titulo">
-                                        <span>VOTOS CONTRA</span>
+                                        <span>{{ __('VOTOS CONTRA') }}</span>
                                         <span>
-                                            <img decoding="async" src="{{ asset('assets/images/icon.png') }}">
+                                            <img src="{{ asset('assets/images/icon.png') }}" loading="lazy">
                                         </span>
                                     </h3>
                                     <div class="parlamentares votos-container">
                                         @foreach ($against as $vote)
                                             <div class="parlamentar">
                                                 <div class="imagem">
-                                                    <img loading="lazy" decoding="async" src="{{$vote->senator->image_profile }}" width="99" height="120" alt="Avatar de Alan Rick">
+                                                    <img src="{{ $vote->senator->image_profile }}" width="99" height="120" alt="{{ $vote->senator->image_profile }}" loading="lazy">
                                                 </div>    
                                                 <div class="titulo">{{ $vote->senator->name }}</div>
                                                 <div class="titulo" style="margin: 0; font-weight: 700; font-size: 12px !important; text-transform: none !important;">
@@ -240,10 +242,8 @@
                                 </section>
                                 <div id="modal-norte" class="modal">
                                     <div class="modal-inner">
-                                        <div>
-                                            <h3>{{ __('Norte') }}</h3>
-                                            <a href="#" data-toggle-modal="#modal-norte">×</a>
-                                        </div>
+                                        <a href="#" style="text-decoration: none" data-toggle-modal="#modal-norte">×</a>
+                                        <h3>{{ __('Norte') }}</h3>
                                         <div><a href="#" wire:click="selectedUfId('AC')">{{ __('Acre') }}</a></div>
                                         <div><a href="#" wire:click="selectedUfId('AP')">{{ __('Amapá') }}</a></div>
                                         <div><a href="#" wire:click="selectedUfId('AM')">{{ __('Amazonas') }}</a></div>
@@ -256,10 +256,8 @@
 
                                 <div id="modal-nordeste" class="modal">
                                     <div class="modal-inner">
-                                        <div>
-                                            <h3>{{ __('Nordeste') }}</h3>
-                                            <a href="#" data-toggle-modal="#modal-nordeste">×</a>
-                                        </div>
+                                        <a href="#" style="text-decoration: none" data-toggle-modal="#modal-nordeste">×</a>
+                                        <h3>{{ __('Nordeste') }}</h3>
                                         <div><a href="#" wire:click="selectedUfId('AL')">{{ __('Alagoas') }}</a></div>
                                         <div><a href="#" wire:click="selectedUfId('BA')">{{ __('Bahia') }}</a></div>
                                         <div><a href="#" wire:click="selectedUfId('CE')">{{ __('Ceará') }}</a></div>
@@ -274,10 +272,8 @@
 
                                 <div id="modal-centro-oeste" class="modal">
                                     <div class="modal-inner">
-                                        <div>
-                                            <h3>{{ __('Centro-Oeste') }}</h3>
-                                            <a href="#" data-toggle-modal="#modal-centro-oeste">×</a>
-                                        </div>
+                                        <a href="#" style="text-decoration: none" data-toggle-modal="#modal-centro-oeste">×</a>
+                                        <h3>{{ __('Centro-Oeste') }}</h3>
                                         <div><a href="#" wire:click="selectedUfId('DF')">{{ __('Distrito Federal') }}</a></div>
                                         <div><a href="#" wire:click="selectedUfId('GO')">{{ __('Goiás') }}</a></div>
                                         <div><a href="#" wire:click="selectedUfId('MT')">{{ __('Mato Grosso') }}</a></div>
@@ -287,10 +283,8 @@
 
                                 <div id="modal-sul" class="modal">
                                     <div class="modal-inner">
-                                        <div>
-                                            <h3>{{ __('Sul') }}</h3>
-                                            <a href="#" data-toggle-modal="#modal-sul">×</a>
-                                        </div>
+                                        <a href="#" style="text-decoration: none" data-toggle-modal="#modal-sul">×</a>
+                                        <h3>{{ __('Sul') }}</h3>
                                         <div><a href="#" wire:click="selectedUfId('PR')">{{ __('Paraná') }}</a></div>
                                         <div><a href="#" wire:click="selectedUfId('RS')">{{ __('Rio Grande do Sul') }}</a></div>
                                         <div><a href="#" wire:click="selectedUfId('SC')">{{ __('Santa Catarina') }}</a></div>
@@ -299,10 +293,8 @@
 
                                 <div id="modal-sudeste" class="modal">
                                     <div class="modal-inner">
-                                        <div>
-                                            <h3>{{ __('Sudeste') }}</h3>
-                                            <a href="#" data-toggle-modal="#modal-sudeste">×</a>
-                                        </div>
+                                        <h3>{{ __('Sudeste') }}</h3>
+                                        <a href="#" style="text-decoration: none" data-toggle-modal="#modal-sudeste">×</a>
                                         <div><a href="#" wire:click="selectedUfId('ES')">{{ __('Espírito Santo') }}</a></div>
                                         <div><a href="#" wire:click="selectedUfId('MG')">{{ __('Minas Gerais') }}</a></div>
                                         <div><a href="#" wire:click="selectedUfId('RJ')">{{ __('Rio de Janeiro') }}</a></div>
