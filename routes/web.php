@@ -10,6 +10,8 @@ use App\Livewire\Voting\ListVotings;
 use App\Livewire\Voting\Vote\ListVote;
 use Illuminate\Support\Facades\Route;
 
+
+Route::get('/lula', HomeTwo::class)->name('home.two');
 Route::middleware(['auth', 'verified'])->prefix('cms')->group(function () {
     Route::get('/votacoes', ListVotings::class)->name('votacoes');
     Route::get('/votacoes/{voting}/votos', ListVote::class)->name('votacoes.votos');
@@ -19,7 +21,6 @@ Route::middleware(['auth', 'verified'])->prefix('cms')->group(function () {
 });
 
 Route::get('/', Home::class)->name('home');
-Route::get('/lula', HomeTwo::class)->name('home.two');
 Route::get('/partidos', Partidos::class)->name('partidos');
 
 Route::view('dashboard', 'dashboard')
