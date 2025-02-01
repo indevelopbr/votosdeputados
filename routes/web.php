@@ -19,7 +19,7 @@ Route::middleware(['auth', 'verified'])->prefix('cms')->group(function () {
 });
 
 Route::get('/', Home::class)->name('home');
-Route::get('/impeachment-de-lula', HomeTwo::class)->name('home.two');
+Route::get('/lula', HomeTwo::class)->name('home.two');
 Route::get('/partidos', Partidos::class)->name('partidos');
 
 Route::view('dashboard', 'dashboard')
