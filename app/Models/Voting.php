@@ -13,7 +13,7 @@ class Voting extends Model
 {
     use HasFactory, Notifiable, SoftDeletes, LogsActivity;
 
-    protected $fillable = ['name'];
+    protected $fillable = ['name', 'voting_uri', 'main_vote', 'image_url'];
 
     public function getActivitylogOptions(): LogOptions
     {

@@ -56,6 +56,9 @@
                                     Título
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase">
+                                    Link
+                                </th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-bold text-gray-700 uppercase">
                                     Criado em
                                 </th>
                                 <th scope="col" class="px-6 py-3 text-right text-xs font-bold text-gray-700 uppercase">
@@ -71,6 +74,11 @@
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
                                         {{ $votacao->name }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
+                                        <a href="{{ config('app.url') . '/' . $votacao->voting_uri }}">
+                                            {{ config('app.url') . '/' . $votacao->voting_uri }}
+                                        </a>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">
                                         {{ $votacao->created_at->format('d/m/Y H:i') }}
@@ -131,54 +139,93 @@
 
     <!-- Modal para criar/editar votação -->
     @if($showModal)
-        <div class="fixed inset-0 flex items-center justify-center z-50">
-            <!-- Fundo escuro para o modal -->
-            <div 
-                class="absolute inset-0 bg-black bg-opacity-50"
-                wire:click="closeModal"
-            ></div>
-            
-            <!-- Conteúdo do modal -->
-            <div class="bg-white rounded shadow-lg p-6 w-full max-w-lg z-50">
+        <div class="fixed inset-0 z-50 flex items-center justify-center">
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-black bg-opacity-50 cursor-pointer" 
+                wire:click="closeModal">
+            </div>
+
+            <!-- Container do Modal -->
+            <div class="relative bg-white rounded-lg shadow-lg p-6 w-full max-w-lg">
+                <!-- Título do Modal -->
                 <h2 class="text-xl font-bold mb-4">
                     {{ $modalTitle }}
                 </h2>
 
+                <!-- Campo: Título -->
                 <div class="mb-4">
-                    <label class="block font-semibold mb-1" for="name">
-                        Título
+                    <label for="name" class="block font-semibold mb-1">
+                        {{ __('Título') }}
                     </label>
                     <input 
                         type="text" 
-                        wire:model="name" 
                         id="name" 
-                        class="w-full border-gray-300 rounded-md shadow-sm 
-                               focus:border-indigo-500 focus:ring focus:ring-indigo-200 
-                               focus:ring-opacity-50 px-4 py-2" 
+                        wire:model="name" 
+                        class="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-200 focus:ring-opacity-50 px-4 py-2" 
                         placeholder="Digite o título da votação"
                     />
-                    @error('name') 
-                        <span class="text-red-500 text-sm">{{ $message }}</span> 
+                    @error('name')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
                     @enderror
                 </div>
 
+                <!-- Campo: Upload de Foto -->
+                <div class="mb-4">
+                    <label for="file" class="block font-semibold mb-1">
+                        {{ __('Foto da pessoa do Impeachment') }}
+                    </label>
+                    <input 
+                        type="file" 
+                        id="file" 
+                        wire:model="file" 
+                        class="w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-200 focus:ring-opacity-50 px-4 py-2"
+                    />
+                    @error('file')
+                        <span class="text-red-500 text-sm">{{ $message }}</span>
+                    @enderror
+
+                    <!-- Exemplo de pré-visualização da imagem (opcional) -->
+                    @if($file)
+                        <div class="mt-2">
+                            <img src="{{ $file->temporaryUrl() }}" 
+                                alt="Preview da Imagem"
+                                class="max-h-32 rounded-md shadow">
+                        </div>
+                    @endif
+                </div>
+
+                <!-- Campo: Checkbox para marcar como principal -->
+                <div class="mb-4 flex items-center">
+                    <input 
+                        type="checkbox" 
+                        id="isMain" 
+                        wire:model="isMain"
+                        class="mr-2 border-gray-300 rounded shadow-sm focus:ring-indigo-200 focus:ring-opacity-50"
+                    />
+                    <label for="isMain" class="font-semibold">
+                        {{ __('Marcar como votação principal') }}
+                    </label>
+                    @error('isMain')
+                        <span class="text-red-500 text-sm ml-2">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <!-- Botões de Ação -->
                 <div class="flex justify-end mt-4">
                     <button 
                         wire:click="createVotacao" 
-                        class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded mr-2 
-                               focus:outline-none focus:ring-2 focus:ring-green-500"
+                        class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded mr-2 focus:outline-none focus:ring-2 focus:ring-green-500"
                     >
-                        Salvar
+                        {{ __('Salvar') }}
                     </button>
                     <button 
-                        wire:click="closeModal"
-                        class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded 
-                               focus:outline-none focus:ring-2 focus:ring-gray-500"
+                        wire:click="closeModal" 
+                        class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-gray-500"
                     >
-                        Cancelar
+                        {{ __('Cancelar') }}
                     </button>
                 </div>
             </div>
         </div>
-    @endif
+    @endif  
 </div>

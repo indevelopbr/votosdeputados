@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="profile" href="https://gmpg.org/xfn/11">
-        <link rel="preload" href="{{ strpos($title, 'Lula') !== false ? asset('assets/images/lula.png') : asset('assets/images/foto-moraes.png') }}" as="image">
+        <link rel="preload" href="{{ asset('assets/images/foto-moraes.png') }}" as="image">
         <title>{{ config('app.name') . ' - ' . $title }}</title>
         <meta name="robots" content="max-image-preview:large">
         <link rel="stylesheet" href="{{ asset('assets/css/header-footer-elementor.css?ver=1.6.42') }}" media="all">
@@ -302,138 +302,6 @@
         </style>
     </head>
     <body class="home page-template-default page page-id-807 ehf-template-hello-elementor ehf-stylesheet-hello-elementor elementor-default elementor-kit-14 elementor-page elementor-page-807 e--ua-blink e--ua-edge e--ua-webkit" data-elementor-device-mode="desktop">
-		<div data-elementor-type="header" data-elementor-id="710" class="elementor elementor-710 elementor-location-header" data-elementor-post-type="elementor_library">
-            @if (strpos($title, 'Lula') === false)
-            <section class="elementor-section elementor-top-section elementor-element elementor-element-169d11ea elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="169d11ea" data-element_type="section" id="topo" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                <div class="elementor-container elementor-column-gap-default">
-                    <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-79b3a173" data-id="79b3a173" data-element_type="column">
-                        <div class="elementor-widget-wrap elementor-element-populated">
-                            <div class="elementor-element elementor-element-a50a199 elementor-widget elementor-widget-heading" data-id="a50a199" data-element_type="widget" data-widget_type="heading.default">
-                                <div class="elementor-widget-container">
-                                    <h2 class="elementor-heading-title elementor-size-default">
-                                        <a href="https://www.change.org/p/impeachment-de-alexandre-de-moraes-pelo-bem-da-democracia" target="_blank" style="color: white">
-                                            {{ __('Assine a maior petição pública pelo impeachment na história do Brasil! Meta: 5 milhões de assinaturas.') }}
-                                        </a>
-                                    </h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-9a1981b" data-id="9a1981b" data-element_type="column">
-                        <div class="elementor-widget-wrap elementor-element-populated">
-                            <div class="elementor-element elementor-element-5e61938 elementor-align-left elementor-tablet-align-center elementor-widget elementor-widget-button" data-id="5e61938" data-element_type="widget" data-widget_type="button.default">
-                                <div class="elementor-widget-container">
-                                    <div class="elementor-button-wrapper">
-                                        <a class="elementor-button elementor-button-link elementor-size-sm" href="https://www.change.org/p/impeachment-de-alexandre-de-moraes-pelo-bem-da-democracia" target="_blank">
-                                            <span class="elementor-button-content-wrapper">
-                                                <span class="elementor-button-text">ASSINAR</span>
-                                            </span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            @endif
-            <section class="elementor-section elementor-top-section elementor-element elementor-element-d5c369f elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="d5c369f" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                <div class="elementor-container elementor-column-gap-default">
-                    <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-749a8cb" data-id="749a8cb" data-element_type="column">
-                        <div class="elementor-widget-wrap elementor-element-populated">
-                            <div class="elementor-element elementor-element-161855b elementor-widget elementor-widget-image" data-id="161855b" data-element_type="widget" data-widget_type="image.default">
-                                <div class="elementor-widget-container">
-                                    <img src="{{ asset('assets/images/logo-votossenadores.png') }}" title="logo-votossenadores" alt="logo-votossenadores" loading="lazy">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="elementor-section elementor-top-section elementor-element elementor-element-574b329 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="574b329" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                <div class="elementor-container elementor-column-gap-default">
-					<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-6d0af0a" data-id="6d0af0a" data-element_type="column">
-			            <div class="elementor-widget-wrap elementor-element-populated">
-						    <div class="elementor-element elementor-element-44ece10 elementor-widget elementor-widget-heading" data-id="44ece10" data-element_type="widget" data-widget_type="heading.default">
-				                <div class="elementor-widget-container">
-			                        <h2 class="elementor-heading-title elementor-size-default">
-                                        {{ __('Conheça a posição do seu Deputado no:') }}
-                                    </h2>
-                                </div>
-				            </div>
-				            <div class="elementor-element elementor-element-3ac498e elementor-widget elementor-widget-heading" data-id="3ac498e" data-element_type="widget" data-widget_type="heading.default">
-				                <div class="elementor-widget-container">
-			                        <h2 class="elementor-heading-title elementor-size-default">
-                                        {{ $title }}
-                                    </h2>
-                                </div>
-				            </div>
-					    </div>
-		            </div>
-				    <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-21faa2b" data-id="21faa2b" data-element_type="column">
-			            <div class="elementor-widget-wrap elementor-element-populated">
-						    <div class="elementor-element elementor-element-ad36cfc elementor-widget elementor-widget-image" data-id="ad36cfc" data-element_type="widget" data-widget_type="image.default">
-				                <div class="elementor-widget-container">
-                                    <img src="{{ strpos($title, 'Lula') !== false ? asset('assets/images/lula.png') : asset('assets/images/foto-moraes.png') }}" title="foto-moraes" alt="foto-moraes" loading="lazy">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-        <main id="content" class="site-main post-807 page type-page status-publish hentry">
-            {{ $slot }}
-        </main>
-
-        <div data-elementor-type="footer" data-elementor-id="712" class="elementor elementor-712 elementor-location-footer" data-elementor-post-type="elementor_library">
-			<div class="elementor-element elementor-element-f891df8 e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="f891df8" data-element_type="container" id="more-votes" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-                <div class="e-con-inner">
-				    <div class="elementor-element elementor-element-b04cafc elementor-widget elementor-widget-heading" data-id="b04cafc" data-element_type="widget" data-widget_type="heading.default">
-				        <div class="elementor-widget-container">
-			                <h2 class="elementor-heading-title elementor-size-default">Conheça a posição do seu deputado federal no {{ $title }}</h2>
-                        </div>
-				    </div>
-				    <div class="elementor-element elementor-element-1239397 elementor-align-center elementor-tablet-align-center elementor-widget elementor-widget-button" data-id="1239397" data-element_type="widget" data-widget_type="button.default">
-				        <div class="elementor-widget-container">
-					        <div class="elementor-button-wrapper">
-			                <a class="elementor-button elementor-button-link elementor-size-sm" href="https://votosdeputados.com.br/" target="_blank">
-                                <span class="elementor-button-content-wrapper">
-                                    <span class="elementor-button-text">Acessar Votos Deputados</span>
-                                </span>
-                            </a>
-		                </div>
-                    </div>
-				</div>
-            </div>
-        </div>
-		<div class="elementor-element elementor-element-12feac4 e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="12feac4" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-            <div class="e-con-inner"  style="align-items: center;">
-				<div class="elementor-element elementor-element-761b918 elementor-widget elementor-widget-heading" data-id="761b918" data-element_type="widget" data-widget_type="heading.default">
-                    <div class="elementor-widget-container">
-                        <h2 class="elementor-heading-title elementor-size-default">Sobre o Votos Deputados</h2>
-                    </div>
-                </div>
-				<div class="elementor-element elementor-element-27ed8ea elementor-widget elementor-widget-heading" data-id="27ed8ea" data-element_type="widget" data-widget_type="heading.default">
-				    <div class="elementor-widget-container">
-			            <h2 class="elementor-heading-title elementor-size-default">
-                            Este site tem como objetivo apresentar as intenções de voto ou apoio dos deputados em exercício no Brasil aos projetos e pautas em discussão. Confira se eles estão honrando o voto que você, eleitor, depositou neles.
-                        </h2>
-                    </div>
-				</div>
-				<div class="elementor-element elementor-element-7ad2cf4 elementor-widget elementor-widget-image" data-id="7ad2cf4" data-element_type="widget" data-widget_type="image.default">
-				    <div class="elementor-widget-container">
-                        <img src="{{ asset('assets/images/logo-votossenadores-2.png') }}" title="logo-votossenadores-2" alt="logo-votossenadores-2" loading="lazy">													</div>
-				    </div>
-		            <div class="elementor-element elementor-element-e7abcd3 e-con-full e-flex e-con e-child" data-id="e7abcd3" data-element_type="container">
-				        <div class="elementor-element elementor-element-951d8ff elementor-widget elementor-widget-heading" data-id="951d8ff" data-element_type="widget" data-widget_type="heading.default">
-				            <div class="elementor-widget-container">
-			                    <h2 class="elementor-heading-title elementor-size-default">© 2024 Direitos reservados</h2>
-                            </div>
-				        </div>
-				    </div>
-                </div>
-            </div>
-        </div>
+        {{ $slot }}
     </body>
 </html>

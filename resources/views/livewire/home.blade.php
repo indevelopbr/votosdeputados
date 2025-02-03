@@ -1,4 +1,85 @@
 <div>
+    <div data-elementor-type="header" data-elementor-id="710" class="elementor elementor-710 elementor-location-header" data-elementor-post-type="elementor_library">
+        @if($voting->main_vote)
+        <section class="elementor-section elementor-top-section elementor-element elementor-element-169d11ea elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="169d11ea" data-element_type="section" id="topo" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+            <div class="elementor-container elementor-column-gap-default">
+                <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-79b3a173" data-id="79b3a173" data-element_type="column">
+                    <div class="elementor-widget-wrap elementor-element-populated">
+                        <div class="elementor-element elementor-element-a50a199 elementor-widget elementor-widget-heading" data-id="a50a199" data-element_type="widget" data-widget_type="heading.default">
+                            <div class="elementor-widget-container">
+                                <h2 class="elementor-heading-title elementor-size-default">
+                                    <a href="https://www.change.org/p/impeachment-de-alexandre-de-moraes-pelo-bem-da-democracia" target="_blank" style="color: white">
+                                        {{ __('Assine a maior petição pública pelo impeachment na história do Brasil! Meta: 5 milhões de assinaturas.') }}
+                                    </a>
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-9a1981b" data-id="9a1981b" data-element_type="column">
+                    <div class="elementor-widget-wrap elementor-element-populated">
+                        <div class="elementor-element elementor-element-5e61938 elementor-align-left elementor-tablet-align-center elementor-widget elementor-widget-button" data-id="5e61938" data-element_type="widget" data-widget_type="button.default">
+                            <div class="elementor-widget-container">
+                                <div class="elementor-button-wrapper">
+                                    <a class="elementor-button elementor-button-link elementor-size-sm" href="https://www.change.org/p/impeachment-de-alexandre-de-moraes-pelo-bem-da-democracia" target="_blank">
+                                        <span class="elementor-button-content-wrapper">
+                                            <span class="elementor-button-text">ASSINAR</span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        @endif
+        <section class="elementor-section elementor-top-section elementor-element elementor-element-d5c369f elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="d5c369f" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+            <div class="elementor-container elementor-column-gap-default">
+                <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-749a8cb" data-id="749a8cb" data-element_type="column">
+                    <div class="elementor-widget-wrap elementor-element-populated">
+                        <div class="elementor-element elementor-element-161855b elementor-widget elementor-widget-image" data-id="161855b" data-element_type="widget" data-widget_type="image.default">
+                            <div class="elementor-widget-container">
+                                <img src="{{ asset('assets/images/logo-votossenadores.png') }}" title="logo-votossenadores" alt="logo-votossenadores" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="elementor-section elementor-top-section elementor-element elementor-element-574b329 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="574b329" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+            <div class="elementor-container elementor-column-gap-default">
+                <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-6d0af0a" data-id="6d0af0a" data-element_type="column">
+                    <div class="elementor-widget-wrap elementor-element-populated">
+                        <div class="elementor-element elementor-element-44ece10 elementor-widget elementor-widget-heading" data-id="44ece10" data-element_type="widget" data-widget_type="heading.default">
+                            <div class="elementor-widget-container">
+                                <h2 class="elementor-heading-title elementor-size-default">
+                                    {{ __('Conheça a posição do seu Senador no:') }}
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="elementor-element elementor-element-3ac498e elementor-widget elementor-widget-heading" data-id="3ac498e" data-element_type="widget" data-widget_type="heading.default">
+                            <div class="elementor-widget-container">
+                                <h2 class="elementor-heading-title elementor-size-default">
+                                    {{ $title }}
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-21faa2b" data-id="21faa2b" data-element_type="column">
+                    <div class="elementor-widget-wrap elementor-element-populated">
+                        <div class="elementor-element elementor-element-ad36cfc elementor-widget elementor-widget-image" data-id="ad36cfc" data-element_type="widget" data-widget_type="image.default">
+                            <div class="elementor-widget-container">
+                                <img src="{{ $voting->image_url }}" title="foto-moraes" alt="foto-moraes" loading="lazy">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <main id="content" class="site-main post-807 page type-page status-publish hentry">
     <div class="page-header">
         <h1 class="entry-title">{{ $title }}</h1>
     </div>
@@ -11,7 +92,7 @@
                             <div class="wrap-votos">
                                 <section class="mapa votos-container" style="margin-top: 3rem">
                                     <div class="mapa-regioes">
-                                        <a href="#" wire:click="selectedUfId('')" class="mapa-brasil active">
+                                        <a href="https://votossenadores.com.br/" class="mapa-brasil active">
                                             <picture>
                                                 <x-icones.map-brazil />
                                             </picture>
@@ -55,7 +136,7 @@
                                         <a href="#inFavor" style="text-decoration: none;">
                                             <div class="card votos-a-favor">
                                                 <div class="titulo">{{ __('A FAVOR') }}</div>
-                                                <span class="numero">
+                                                <span class="numero" data-duration="2000" data-to-value="{{ $inFavor->count() }}" data-from-value="0" data-delimiter=",">
                                                     {{ $inFavor->count() }}
                                                 </span>
                                             </div>
@@ -63,7 +144,7 @@
                                         <a href="#indefinite" style="text-decoration: none;">
                                             <div class="card votos-abstencoes">
                                                 <div class="titulo">{{ __('INDEFINIDOS') }}</div>
-                                                <span class="numero">
+                                                <span class="numero" data-duration="2000" data-to-value="{{ $indefinite->count() }}" data-from-value="0" data-delimiter=",">
                                                     {{ $indefinite->count() }}
                                                 </span>
                                             </div>
@@ -71,7 +152,7 @@
                                         <a href="#against" style="text-decoration: none;">
                                             <div class="card votos-contra">
                                                 <div class="titulo">{{ __('CONTRA') }}</div>
-                                                <span class="numero">
+                                                <span class="numero" data-duration="2000" data-to-value="{{ $against->count() }}" data-from-value="0" data-delimiter=",">
                                                     {{ $against->count() }}
                                                 </span>
                                             </div>
@@ -82,14 +163,14 @@
                                     <h3 class="tipo-titulo">
                                         <span>{{ __('VOTOS A FAVOR') }}</span>
                                         <span>
-                                            <img src="{{ asset('assets/images/icon.png') }}" loading="lazy">
+                                            <img decoding="async" src="{{ asset('assets/images/icon.png') }}">
                                         </span>
                                     </h3>
                                     <div class="parlamentares votos-container">
                                         @foreach ($inFavor as $vote)
                                             <div class="parlamentar">
                                                 <div class="imagem">
-                                                    <img src="{{$vote->senator->image_profile }}" width="99" height="120" alt="{{ $vote->senator->name }}" loading="lazy">
+                                                    <img loading="lazy" decoding="async" src="{{$vote->senator->image_profile }}" width="99" height="120" alt="Avatar de Alan Rick">
                                                 </div>    
                                                 <div class="titulo">{{ $vote->senator->name }}</div>
                                                 <div class="titulo" style="margin: 0; font-weight: 700; font-size: 12px !important; text-transform: none !important;">
@@ -135,15 +216,13 @@
                                 <section class="votos votos-abstencoes" id="indefinidos">
                                     <h3 class="tipo-titulo">
                                         <span>{{ __('INDEFINIDOS') }}</span>
-                                        <span>
-                                            <img src="{{ asset('assets/images/icon.png') }}" loading="lazy">
-                                        </span>
+                                        <span><img decoding="async" src="{{ asset('assets/images/icon.png') }}"></span>
                                     </h3>
                                     <div class="parlamentares votos-container">
                                         @foreach ($indefinite as $vote)
                                             <div class="parlamentar">
                                                 <div class="imagem">
-                                                    <img src="{{$vote->senator->image_profile }}" width="99" height="120" alt="{{ $vote->senator->name }}" loading="lazy">
+                                                    <img loading="lazy" decoding="async" src="{{$vote->senator->image_profile }}" width="99" height="120" alt="Avatar de Alan Rick">
                                                 </div>    
                                                 <div class="titulo">{{ $vote->senator->name }}</div>
                                                 <div class="titulo" style="margin: 0; font-weight: 700; font-size: 12px !important; text-transform: none !important;">
@@ -188,16 +267,16 @@
                                 </section>
                                 <section class="votos votos-contra" id="contra">
                                     <h3 class="tipo-titulo">
-                                        <span>{{ __('VOTOS CONTRA') }}</span>
+                                        <span>VOTOS CONTRA</span>
                                         <span>
-                                            <img src="{{ asset('assets/images/icon.png') }}" loading="lazy">
+                                            <img decoding="async" src="{{ asset('assets/images/icon.png') }}">
                                         </span>
                                     </h3>
                                     <div class="parlamentares votos-container">
                                         @foreach ($against as $vote)
                                             <div class="parlamentar">
                                                 <div class="imagem">
-                                                    <img src="{{ $vote->senator->image_profile }}" width="99" height="120" alt="{{ $vote->senator->image_profile }}" loading="lazy">
+                                                    <img loading="lazy" decoding="async" src="{{$vote->senator->image_profile }}" width="99" height="120" alt="Avatar de Alan Rick">
                                                 </div>    
                                                 <div class="titulo">{{ $vote->senator->name }}</div>
                                                 <div class="titulo" style="margin: 0; font-weight: 700; font-size: 12px !important; text-transform: none !important;">
@@ -242,8 +321,10 @@
                                 </section>
                                 <div id="modal-norte" class="modal">
                                     <div class="modal-inner">
-                                        <a href="#" style="text-decoration: none" data-toggle-modal="#modal-norte">×</a>
-                                        <h3>{{ __('Norte') }}</h3>
+                                        <div>
+                                            <h3>{{ __('Norte') }}</h3>
+                                            <a href="#" data-toggle-modal="#modal-norte">×</a>
+                                        </div>
                                         <div><a href="#" wire:click="selectedUfId('AC')">{{ __('Acre') }}</a></div>
                                         <div><a href="#" wire:click="selectedUfId('AP')">{{ __('Amapá') }}</a></div>
                                         <div><a href="#" wire:click="selectedUfId('AM')">{{ __('Amazonas') }}</a></div>
@@ -256,8 +337,10 @@
 
                                 <div id="modal-nordeste" class="modal">
                                     <div class="modal-inner">
-                                        <a href="#" style="text-decoration: none" data-toggle-modal="#modal-nordeste">×</a>
-                                        <h3>{{ __('Nordeste') }}</h3>
+                                        <div>
+                                            <h3>{{ __('Nordeste') }}</h3>
+                                            <a href="#" data-toggle-modal="#modal-nordeste">×</a>
+                                        </div>
                                         <div><a href="#" wire:click="selectedUfId('AL')">{{ __('Alagoas') }}</a></div>
                                         <div><a href="#" wire:click="selectedUfId('BA')">{{ __('Bahia') }}</a></div>
                                         <div><a href="#" wire:click="selectedUfId('CE')">{{ __('Ceará') }}</a></div>
@@ -272,8 +355,10 @@
 
                                 <div id="modal-centro-oeste" class="modal">
                                     <div class="modal-inner">
-                                        <a href="#" style="text-decoration: none" data-toggle-modal="#modal-centro-oeste">×</a>
-                                        <h3>{{ __('Centro-Oeste') }}</h3>
+                                        <div>
+                                            <h3>{{ __('Centro-Oeste') }}</h3>
+                                            <a href="#" data-toggle-modal="#modal-centro-oeste">×</a>
+                                        </div>
                                         <div><a href="#" wire:click="selectedUfId('DF')">{{ __('Distrito Federal') }}</a></div>
                                         <div><a href="#" wire:click="selectedUfId('GO')">{{ __('Goiás') }}</a></div>
                                         <div><a href="#" wire:click="selectedUfId('MT')">{{ __('Mato Grosso') }}</a></div>
@@ -283,8 +368,10 @@
 
                                 <div id="modal-sul" class="modal">
                                     <div class="modal-inner">
-                                        <a href="#" style="text-decoration: none" data-toggle-modal="#modal-sul">×</a>
-                                        <h3>{{ __('Sul') }}</h3>
+                                        <div>
+                                            <h3>{{ __('Sul') }}</h3>
+                                            <a href="#" data-toggle-modal="#modal-sul">×</a>
+                                        </div>
                                         <div><a href="#" wire:click="selectedUfId('PR')">{{ __('Paraná') }}</a></div>
                                         <div><a href="#" wire:click="selectedUfId('RS')">{{ __('Rio Grande do Sul') }}</a></div>
                                         <div><a href="#" wire:click="selectedUfId('SC')">{{ __('Santa Catarina') }}</a></div>
@@ -293,8 +380,10 @@
 
                                 <div id="modal-sudeste" class="modal">
                                     <div class="modal-inner">
-                                        <h3>{{ __('Sudeste') }}</h3>
-                                        <a href="#" style="text-decoration: none" data-toggle-modal="#modal-sudeste">×</a>
+                                        <div>
+                                            <h3>{{ __('Sudeste') }}</h3>
+                                            <a href="#" data-toggle-modal="#modal-sudeste">×</a>
+                                        </div>
                                         <div><a href="#" wire:click="selectedUfId('ES')">{{ __('Espírito Santo') }}</a></div>
                                         <div><a href="#" wire:click="selectedUfId('MG')">{{ __('Minas Gerais') }}</a></div>
                                         <div><a href="#" wire:click="selectedUfId('RJ')">{{ __('Rio de Janeiro') }}</a></div>
@@ -681,4 +770,55 @@
             </div>
         </div>	
     </div>
+</main>
+
+<div data-elementor-type="footer" data-elementor-id="712" class="elementor elementor-712 elementor-location-footer" data-elementor-post-type="elementor_library">
+    <div class="elementor-element elementor-element-f891df8 e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="f891df8" data-element_type="container" id="more-votes" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+        <div class="e-con-inner">
+            <div class="elementor-element elementor-element-b04cafc elementor-widget elementor-widget-heading" data-id="b04cafc" data-element_type="widget" data-widget_type="heading.default">
+                <div class="elementor-widget-container">
+                    <h2 class="elementor-heading-title elementor-size-default">Conheça a posição do seu deputado federal no Impeachment de Alexandre de Moraes</h2>
+                </div>
+            </div>
+            <div class="elementor-element elementor-element-1239397 elementor-align-center elementor-tablet-align-center elementor-widget elementor-widget-button" data-id="1239397" data-element_type="widget" data-widget_type="button.default">
+                <div class="elementor-widget-container">
+                    <div class="elementor-button-wrapper">
+                    <a class="elementor-button elementor-button-link elementor-size-sm" href="https://votosdeputados.com.br/" target="_blank">
+                        <span class="elementor-button-content-wrapper">
+                            <span class="elementor-button-text">Acessar Votos Deputados</span>
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="elementor-element elementor-element-12feac4 e-flex e-con-boxed e-con e-parent e-lazyloaded" data-id="12feac4" data-element_type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+    <div class="e-con-inner"  style="align-items: center;">
+        <div class="elementor-element elementor-element-761b918 elementor-widget elementor-widget-heading" data-id="761b918" data-element_type="widget" data-widget_type="heading.default">
+            <div class="elementor-widget-container">
+                <h2 class="elementor-heading-title elementor-size-default">Sobre o Votos Senadores</h2>
+            </div>
+        </div>
+        <div class="elementor-element elementor-element-27ed8ea elementor-widget elementor-widget-heading" data-id="27ed8ea" data-element_type="widget" data-widget_type="heading.default">
+            <div class="elementor-widget-container">
+                <h2 class="elementor-heading-title elementor-size-default">
+                    Este site tem como objetivo apresentar as intenções de voto ou apoio dos senadores em exercício no Brasil aos projetos e pautas em discussão. Confira se eles estão honrando o voto que você, eleitor, depositou neles.
+                </h2>
+            </div>
+        </div>
+        <div class="elementor-element elementor-element-7ad2cf4 elementor-widget elementor-widget-image" data-id="7ad2cf4" data-element_type="widget" data-widget_type="image.default">
+            <div class="elementor-widget-container">
+                <img src="{{ asset('assets/images/logo-votossenadores-2.png') }}" title="logo-votossenadores-2" alt="logo-votossenadores-2" loading="lazy">													</div>
+            </div>
+            <div class="elementor-element elementor-element-e7abcd3 e-con-full e-flex e-con e-child" data-id="e7abcd3" data-element_type="container">
+                <div class="elementor-element elementor-element-951d8ff elementor-widget elementor-widget-heading" data-id="951d8ff" data-element_type="widget" data-widget_type="heading.default">
+                    <div class="elementor-widget-container">
+                        <h2 class="elementor-heading-title elementor-size-default">© 2024 Direitos reservados</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </div>

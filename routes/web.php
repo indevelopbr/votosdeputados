@@ -2,7 +2,6 @@
 
 use App\Livewire\Auth\EditarVoto;
 use App\Livewire\Home;
-use App\Livewire\HomeTwo;
 use App\Livewire\Partidos;
 use App\Livewire\Senator\CreateOrEditSenator;
 use App\Livewire\Senator\ListSenators;
@@ -10,8 +9,6 @@ use App\Livewire\Voting\ListVotings;
 use App\Livewire\Voting\Vote\ListVote;
 use Illuminate\Support\Facades\Route;
 
-
-Route::get('/lula', HomeTwo::class)->name('home.two');
 Route::middleware(['auth', 'verified'])->prefix('cms')->group(function () {
     Route::get('/votacoes', ListVotings::class)->name('votacoes');
     Route::get('/votacoes/{voting}/votos', ListVote::class)->name('votacoes.votos');
@@ -20,7 +17,6 @@ Route::middleware(['auth', 'verified'])->prefix('cms')->group(function () {
     Route::get('/deputados/{senator}/editar', CreateOrEditSenator::class)->name('senadores.editar');
 });
 
-Route::get('/', Home::class)->name('home');
 Route::get('/partidos', Partidos::class)->name('partidos');
 
 Route::view('dashboard', 'dashboard')
@@ -32,3 +28,6 @@ Route::view('profile', 'profile')
     ->name('profile');
 
 require __DIR__.'/auth.php';
+
+Route::get('/', Home::class)->name('home');
+Route::get('/{uri}', Home::class)->name('home');
