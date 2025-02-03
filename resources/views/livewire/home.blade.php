@@ -9,12 +9,12 @@
                                 <h2 class="elementor-heading-title elementor-size-default">
                                     @if ($voting->id === 1)
                                     <a href="https://votosdeputados.com.br/lula" target="_blank" style="color: white">
-                                        {{ __('Conheça a posição do seu Senador no Impeachment de Lula') }}
+                                        {{ __('Conheça a posição do seu Deputado no Impeachment de Lula') }}
                                     </a>
                                     @endif
                                     @if ($voting->id === 2)
                                     <a href="https://votosdeputados.com.br/moraes" target="_blank" style="color: white">
-                                        {{ __('Conheça a posição do seu Senador no Impeachment de Alexandre de Moraes') }}
+                                        {{ __('Conheça a posição do seu Deputado no Impeachment de Alexandre de Moraes') }}
                                     </a>
                                     @endif
                                 </h2>
@@ -68,7 +68,7 @@
                         <div class="elementor-element elementor-element-44ece10 elementor-widget elementor-widget-heading" data-id="44ece10" data-element_type="widget" data-widget_type="heading.default">
                             <div class="elementor-widget-container">
                                 <h2 class="elementor-heading-title elementor-size-default">
-                                    {{ __('Conheça a posição do seu Senador no:') }}
+                                    {{ __('Conheça a posição do seu Deputado no:') }}
                                 </h2>
                             </div>
                         </div>
