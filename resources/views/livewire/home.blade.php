@@ -811,13 +811,13 @@
     <div class="e-con-inner"  style="align-items: center;">
         <div class="elementor-element elementor-element-761b918 elementor-widget elementor-widget-heading" data-id="761b918" data-element_type="widget" data-widget_type="heading.default">
             <div class="elementor-widget-container">
-                <h2 class="elementor-heading-title elementor-size-default">Sobre o Votos Senadores</h2>
+                <h2 class="elementor-heading-title elementor-size-default">Sobre o Votos Deputados</h2>
             </div>
         </div>
         <div class="elementor-element elementor-element-27ed8ea elementor-widget elementor-widget-heading" data-id="27ed8ea" data-element_type="widget" data-widget_type="heading.default">
             <div class="elementor-widget-container">
                 <h2 class="elementor-heading-title elementor-size-default">
-                    Este site tem como objetivo apresentar as intenções de voto ou apoio dos senadores em exercício no Brasil aos projetos e pautas em discussão. Confira se eles estão honrando o voto que você, eleitor, depositou neles.
+                    Este site tem como objetivo apresentar as intenções de voto ou apoio dos deputados em exercício no Brasil aos projetos e pautas em discussão. Confira se eles estão honrando o voto que você, eleitor, depositou neles.
                 </h2>
             </div>
         </div>
