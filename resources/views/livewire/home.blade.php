@@ -27,11 +27,20 @@
                         <div class="elementor-element elementor-element-5e61938 elementor-align-left elementor-tablet-align-center elementor-widget elementor-widget-button" data-id="5e61938" data-element_type="widget" data-widget_type="button.default">
                             <div class="elementor-widget-container">
                                 <div class="elementor-button-wrapper">
-                                    <a class="elementor-button elementor-button-link elementor-size-sm" href="https://www.change.org/p/impeachment-de-alexandre-de-moraes-pelo-bem-da-democracia" target="_blank">
+                                    @if ($voting->id === 1)
+                                    <a class="elementor-button elementor-button-link elementor-size-sm" href="https://votosdeputados.com.br/lula" target="_blank">
                                         <span class="elementor-button-content-wrapper">
-                                            <span class="elementor-button-text">ASSINAR</span>
+                                            <span class="elementor-button-text">ACESSAR</span>
                                         </span>
                                     </a>
+                                    @endif
+                                    @if ($voting->id === 2)
+                                    <a class="elementor-button elementor-button-link elementor-size-sm" href="https://votosdeputados.com.br/moraes" target="_blank">
+                                        <span class="elementor-button-content-wrapper">
+                                            <span class="elementor-button-text">ACESSAR</span>
+                                        </span>
+                                    </a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
