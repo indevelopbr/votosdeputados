@@ -1,6 +1,5 @@
 <div>
     <div data-elementor-type="header" data-elementor-id="710" class="elementor elementor-710 elementor-location-header" data-elementor-post-type="elementor_library">
-        @if($voting->main_vote)
         <section class="elementor-section elementor-top-section elementor-element elementor-element-169d11ea elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="169d11ea" data-element_type="section" id="topo" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
             <div class="elementor-container elementor-column-gap-default">
                 <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-79b3a173" data-id="79b3a173" data-element_type="column">
@@ -8,9 +7,16 @@
                         <div class="elementor-element elementor-element-a50a199 elementor-widget elementor-widget-heading" data-id="a50a199" data-element_type="widget" data-widget_type="heading.default">
                             <div class="elementor-widget-container">
                                 <h2 class="elementor-heading-title elementor-size-default">
-                                    <a href="https://www.change.org/p/impeachment-de-alexandre-de-moraes-pelo-bem-da-democracia" target="_blank" style="color: white">
-                                        {{ __('Assine a maior petição pública pelo impeachment na história do Brasil! Meta: 5 milhões de assinaturas.') }}
+                                    @if ($voting->id === 1)
+                                    <a href="https://votosdeputados.com.br/lula" target="_blank" style="color: white">
+                                        {{ __('Conheça a posição do seu Senador no Impeachment de Lula') }}
                                     </a>
+                                    @endif
+                                    @if ($voting->id === 2)
+                                    <a href="https://votosdeputados.com.br/moraes" target="_blank" style="color: white">
+                                        {{ __('Conheça a posição do seu Senador no Impeachment de Alexandre de Moraes') }}
+                                    </a>
+                                    @endif
                                 </h2>
                             </div>
                         </div>
@@ -33,7 +39,6 @@
                 </div>
             </div>
         </section>
-        @endif
         <section class="elementor-section elementor-top-section elementor-element elementor-element-d5c369f elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="d5c369f" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
             <div class="elementor-container elementor-column-gap-default">
                 <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-749a8cb" data-id="749a8cb" data-element_type="column">
