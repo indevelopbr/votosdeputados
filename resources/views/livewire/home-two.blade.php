@@ -182,7 +182,7 @@
                                     </h3>
                                     <div class="parlamentares votos-container">
                                         @foreach ($inFavor as $vote)
-                                            <div class="parlamentar">
+                                            <div class="parlamentar" data-uf="{{$vote->senator->uf }}">
                                                 <div class="imagem">
                                                     <img loading="lazy" decoding="async" src="{{$vote->senator->image_profile }}" width="99" height="120" alt="Avatar de Alan Rick">
                                                 </div>    
@@ -234,7 +234,7 @@
                                     </h3>
                                     <div class="parlamentares votos-container">
                                         @foreach ($indefinite as $vote)
-                                            <div class="parlamentar">
+                                            <div class="parlamentar" data-uf="{{$vote->senator->uf }}">
                                                 <div class="imagem">
                                                     <img loading="lazy" decoding="async" src="{{$vote->senator->image_profile }}" width="99" height="120" alt="Avatar de Alan Rick">
                                                 </div>    
@@ -288,7 +288,7 @@
                                     </h3>
                                     <div class="parlamentares votos-container">
                                         @foreach ($against as $vote)
-                                            <div class="parlamentar">
+                                            <div class="parlamentar" data-uf="{{$vote->senator->uf }}">
                                                 <div class="imagem">
                                                     <img loading="lazy" decoding="async" src="{{$vote->senator->image_profile }}" width="99" height="120" alt="Avatar de Alan Rick">
                                                 </div>    
@@ -339,13 +339,13 @@
                                             <h3>{{ __('Norte') }}</h3>
                                             <a href="#" data-toggle-modal="#modal-norte">×</a>
                                         </div>
-                                        <div><a href="#" wire:click="selectedUfId('AC')">{{ __('Acre') }}</a></div>
-                                        <div><a href="#" wire:click="selectedUfId('AP')">{{ __('Amapá') }}</a></div>
-                                        <div><a href="#" wire:click="selectedUfId('AM')">{{ __('Amazonas') }}</a></div>
-                                        <div><a href="#" wire:click="selectedUfId('PA')">{{ __('Pará') }}</a></div>
-                                        <div><a href="#" wire:click="selectedUfId('RO')">{{ __('Rondônia') }}</a></div>
-                                        <div><a href="#" wire:click="selectedUfId('RR')">{{ __('Roraima') }}</a></div>
-                                        <div><a href="#" wire:click="selectedUfId('TO')">{{ __('Tocantins') }}</a></div>
+                                        <div><a href="#" data-uf="AC">{{ __('Acre') }}</a></div>
+                                        <div><a href="#" data-uf="AP">{{ __('Amapá') }}</a></div>
+                                        <div><a href="#" data-uf="AM">{{ __('Amazonas') }}</a></div>
+                                        <div><a href="#" data-uf="PA">{{ __('Pará') }}</a></div>
+                                        <div><a href="#" data-uf="RO">{{ __('Rondônia') }}</a></div>
+                                        <div><a href="#" data-uf="RR">{{ __('Roraima') }}</a></div>
+                                        <div><a href="#" data-uf="TO">{{ __('Tocantins') }}</a></div>
                                     </div>
                                 </div>
 
@@ -355,15 +355,15 @@
                                             <h3>{{ __('Nordeste') }}</h3>
                                             <a href="#" data-toggle-modal="#modal-nordeste">×</a>
                                         </div>
-                                        <div><a href="#" wire:click="selectedUfId('AL')">{{ __('Alagoas') }}</a></div>
-                                        <div><a href="#" wire:click="selectedUfId('BA')">{{ __('Bahia') }}</a></div>
-                                        <div><a href="#" wire:click="selectedUfId('CE')">{{ __('Ceará') }}</a></div>
-                                        <div><a href="#" wire:click="selectedUfId('MA')">{{ __('Maranhão') }}</a></div>
-                                        <div><a href="#" wire:click="selectedUfId('PB')">{{ __('Paraíba') }}</a></div>
-                                        <div><a href="#" wire:click="selectedUfId('PE')">{{ __('Pernambuco') }}</a></div>
-                                        <div><a href="#" wire:click="selectedUfId('PI')">{{ __('Piauí') }}</a></div>
-                                        <div><a href="#" wire:click="selectedUfId('RN')">{{ __('Rio Grande do Norte') }}</a></div>
-                                        <div><a href="#" wire:click="selectedUfId('SE')">{{ __('Sergipe') }}</a></div>
+                                        <div><a href="#" data-uf="AL">{{ __('Alagoas') }}</a></div>
+                                        <div><a href="#" data-uf="BA">{{ __('Bahia') }}</a></div>
+                                        <div><a href="#" data-uf="CE">{{ __('Ceará') }}</a></div>
+                                        <div><a href="#" data-uf="MA">{{ __('Maranhão') }}</a></div>
+                                        <div><a href="#" data-uf="PB">{{ __('Paraíba') }}</a></div>
+                                        <div><a href="#" data-uf="PE">{{ __('Pernambuco') }}</a></div>
+                                        <div><a href="#" data-uf="PI">{{ __('Piauí') }}</a></div>
+                                        <div><a href="#" data-uf="RN">{{ __('Rio Grande do Norte') }}</a></div>
+                                        <div><a href="#" data-uf="SE">{{ __('Sergipe') }}</a></div>
                                     </div>
                                 </div>
 
@@ -373,10 +373,10 @@
                                             <h3>{{ __('Centro-Oeste') }}</h3>
                                             <a href="#" data-toggle-modal="#modal-centro-oeste">×</a>
                                         </div>
-                                        <div><a href="#" wire:click="selectedUfId('DF')">{{ __('Distrito Federal') }}</a></div>
-                                        <div><a href="#" wire:click="selectedUfId('GO')">{{ __('Goiás') }}</a></div>
-                                        <div><a href="#" wire:click="selectedUfId('MT')">{{ __('Mato Grosso') }}</a></div>
-                                        <div><a href="#" wire:click="selectedUfId('MS')">{{ __('Mato Grosso do Sul') }}</a></div>
+                                        <div><a href="#" data-uf="DF">{{ __('Distrito Federal') }}</a></div>
+                                        <div><a href="#" data-uf="GO">{{ __('Goiás') }}</a></div>
+                                        <div><a href="#" data-uf="MT">{{ __('Mato Grosso') }}</a></div>
+                                        <div><a href="#" data-uf="MS">{{ __('Mato Grosso do Sul') }}</a></div>
                                     </div>
                                 </div>
 
@@ -386,9 +386,9 @@
                                             <h3>{{ __('Sul') }}</h3>
                                             <a href="#" data-toggle-modal="#modal-sul">×</a>
                                         </div>
-                                        <div><a href="#" wire:click="selectedUfId('PR')">{{ __('Paraná') }}</a></div>
-                                        <div><a href="#" wire:click="selectedUfId('RS')">{{ __('Rio Grande do Sul') }}</a></div>
-                                        <div><a href="#" wire:click="selectedUfId('SC')">{{ __('Santa Catarina') }}</a></div>
+                                        <div><a href="#" data-uf="PR">{{ __('Paraná') }}</a></div>
+                                        <div><a href="#" data-uf="RS">{{ __('Rio Grande do Sul') }}</a></div>
+                                        <div><a href="#" data-uf="SC">{{ __('Santa Catarina') }}</a></div>
                                     </div>
                                 </div>
 
@@ -398,10 +398,10 @@
                                             <h3>{{ __('Sudeste') }}</h3>
                                             <a href="#" data-toggle-modal="#modal-sudeste">×</a>
                                         </div>
-                                        <div><a href="#" wire:click="selectedUfId('ES')">{{ __('Espírito Santo') }}</a></div>
-                                        <div><a href="#" wire:click="selectedUfId('MG')">{{ __('Minas Gerais') }}</a></div>
-                                        <div><a href="#" wire:click="selectedUfId('RJ')">{{ __('Rio de Janeiro') }}</a></div>
-                                        <div><a href="#" wire:click="selectedUfId('SP')">{{ __('São Paulo') }}</a></div>
+                                        <div><a href="#" data-uf="ES">{{ __('Espírito Santo') }}</a></div>
+                                        <div><a href="#" data-uf="MG">{{ __('Minas Gerais') }}</a></div>
+                                        <div><a href="#" data-uf="RJ">{{ __('Rio de Janeiro') }}</a></div>
+                                        <div><a href="#" data-uf="SP">{{ __('São Paulo') }}</a></div>
                                     </div>
                                 </div>
 
@@ -836,3 +836,34 @@
     </div>
 </div>
 </div>
+<script>
+    document.querySelectorAll('[data-toggle-modal]').forEach((el) => {
+        el.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.querySelector(el.getAttribute('data-toggle-modal')).classList.toggle('open');
+        });
+    });
+</script>
+
+<!-- Novo script para filtrar os parlamentares por UF -->
+<script>
+    document.querySelectorAll('[data-uf]').forEach((link) => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const ufSelecionada = link.getAttribute('data-uf');
+            
+            // Filtra todos os parlamentares em cada seção de votos
+            document.querySelectorAll('.parlamentares .parlamentar').forEach((parlamentar) => {
+                // Exibe apenas se o data-uf for igual ao selecionado
+                if (parlamentar.getAttribute('data-uf') === ufSelecionada) {
+                    parlamentar.style.display = 'flex';
+                } else {
+                    parlamentar.style.display = 'none';
+                }
+            });
+            
+            // Fecha todos os modais abertos
+            document.querySelectorAll('.modal.open').forEach(modal => modal.classList.remove('open'));
+        });
+    });
+</script>
