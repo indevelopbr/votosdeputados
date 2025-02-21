@@ -771,7 +771,7 @@
                                 }
                                 </style>
                                 <script>
-                                    document.querySelectorAll('[data-toggle-modal').forEach((el) => {
+                                    document.querySelectorAll('[data-toggle-modal]').forEach((el) => {
                                         el.addEventListener('click', (e) => {
                                             e.preventDefault();
                                             document.querySelector(el.getAttribute('data-toggle-modal')).classList.toggle('open');
