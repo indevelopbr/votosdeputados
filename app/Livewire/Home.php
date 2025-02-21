@@ -14,7 +14,13 @@ class Home extends Component
 
     public function mount(String $uri = null)
     {
-        $this->uri = $uri;
+        $host = request()->getHost();
+
+        if ($host === 'anistia08dejaneiro.com.br' || $host === 'www.anistia08dejaneiro.com.br') {
+            $this->uri = 'anistia-dos-presos-politicos';
+        } else {
+            $this->uri = $uri;
+        }
     }
 
     public function selectedUfId(string $uf) {
@@ -67,14 +73,29 @@ class Home extends Component
         $indefinite = $filteredVotes->where('vote', 'I')->sortBy(fn($vote) => $vote->senator->name ?? '');
         $against = $filteredVotes->where('vote', 'N')->sortBy(fn($vote) => $vote->senator->name ?? '');
 
-        return view('livewire.home', [
-            'title'      => $voting->name,
-            'voting'     => $voting,
-            'inFavor'    => $inFavor,
-            'indefinite' => $indefinite,
-            'against'    => $against,
-        ])
-        ->layout('components.layouts.guest')
-        ->title($voting->name);
+        $host = request()->getHost();
+
+        if ($host === 'anistia08dejaneiro.com.br' || $host === 'www.anistia08dejaneiro.com.br') {
+            return view('livewire.home-two', [
+                'title'      => $voting->name,
+                'voting'     => $voting,
+                'inFavor'    => $inFavor,
+                'indefinite' => $indefinite,
+                'against'    => $against,
+            ])
+            ->layout('components.layouts.guest')
+            ->title($voting->name);
+        } else {
+            return view('livewire.home', [
+                'title'      => $voting->name,
+                'voting'     => $voting,
+                'inFavor'    => $inFavor,
+                'indefinite' => $indefinite,
+                'against'    => $against,
+            ])
+            ->layout('components.layouts.guest')
+            ->title($voting->name);
+        }
+        
     }
 }
