@@ -1,37 +1,5 @@
 <div>
     <div data-elementor-type="header" data-elementor-id="710" class="elementor elementor-710 elementor-location-header" data-elementor-post-type="elementor_library">
-        <section class="elementor-section elementor-top-section elementor-element elementor-element-169d11ea elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="169d11ea" data-element_type="section" id="topo" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
-            <div class="elementor-container elementor-column-gap-default">
-                <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-79b3a173" data-id="79b3a173" data-element_type="column">
-                    <div class="elementor-widget-wrap elementor-element-populated">
-                        <div class="elementor-element elementor-element-a50a199 elementor-widget elementor-widget-heading" data-id="a50a199" data-element_type="widget" data-widget_type="heading.default">
-                            <div class="elementor-widget-container">
-                                <h2 class="elementor-heading-title elementor-size-default">
-                                    <a href="https://votosdeputados.com.br/lula" target="_blank" style="color: white">
-                                        {{ __('Conheça a posição do seu Deputado no Impeachment de Lula') }}
-                                    </a>
-                                </h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-9a1981b" data-id="9a1981b" data-element_type="column">
-                    <div class="elementor-widget-wrap elementor-element-populated">
-                        <div class="elementor-element elementor-element-5e61938 elementor-align-left elementor-tablet-align-center elementor-widget elementor-widget-button" data-id="5e61938" data-element_type="widget" data-widget_type="button.default">
-                            <div class="elementor-widget-container">
-                                <div class="elementor-button-wrapper">
-                                    <a class="elementor-button elementor-button-link elementor-size-sm" href="https://votosdeputados.com.br/lula" target="_blank">
-                                        <span class="elementor-button-content-wrapper">
-                                            <span class="elementor-button-text">ACESSAR</span>
-                                        </span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
         <section class="elementor-section elementor-top-section elementor-element elementor-element-d5c369f elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="d5c369f" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
             <div class="elementor-container elementor-column-gap-default">
                 <div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-749a8cb" data-id="749a8cb" data-element_type="column">
@@ -90,7 +58,7 @@
                             <div class="wrap-votos">
                                 <section class="mapa votos-container" style="margin-top: 3rem">
                                     <div class="mapa-regioes">
-                                        <a href="https://anistia08dejaneiro.com.br/deputados/" class="mapa-brasil active">
+                                        <a href="https://deputados.anistia08dejaneiro.com.br/" class="mapa-brasil active">
                                             <picture>
                                                 <x-icones.map-brazil />
                                             </picture>
