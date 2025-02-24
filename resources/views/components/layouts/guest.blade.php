@@ -17,7 +17,11 @@
         <link rel="stylesheet" href="{{ asset('assets/css/style.min.css?ver=3.1.1') }}" media="all">
         <link rel="stylesheet" href="{{ asset('assets/css/theme.min.css?ver=3.1.1') }}" media="all">
         <link rel="stylesheet" href="{{ asset('assets/css/header-footer.min.css?ver=3.1.1') }}" media="all">
+        @if ($title === 'ANISTIA DOS PRESOS POLÍTICOS')
+        <link rel="stylesheet" href="{{ asset('assets/css/post-508.css') }}" media="all">
+        @else
         <link rel="stylesheet" href="{{ asset('assets/css/post-507.css') }}" media="all">
+        @endif
         <script src="{{ asset('assets/js/jquery.min.js') . '?ver=3.7.1' }}"></script>
         <script src="{{ asset('assets/js/jquery-migrate.min.js') . '?ver=3.4.1' }}"></script>
         <link rel="icon" href="{{ asset('assets/images/favicon-150x150.png') }}" sizes="32x32">

@@ -16,7 +16,7 @@ class Home extends Component
     {
         $host = request()->getHost();
 
-        if ($host === 'deputados.anistia08dejaneiro.com.br' || $host === 'www.deputados.anistia08dejaneiro.com.br') {
+        if ($host != 'deputados.anistia08dejaneiro.com.br' || $host != 'www.deputados.anistia08dejaneiro.com.br') {
             $this->uri = 'anistia-dos-presos-politicos';
         } else {
             $this->uri = $uri;
@@ -75,7 +75,7 @@ class Home extends Component
 
         $host = request()->getHost();
 
-        if ($host === 'deputados.anistia08dejaneiro.com.br' || $host === 'www.deputados.anistia08dejaneiro.com.br') {
+        if ($host != 'deputados.anistia08dejaneiro.com.br' || $host != 'www.deputados.anistia08dejaneiro.com.br') {
             return view('livewire.home-two', [
                 'title'      => $voting->name,
                 'voting'     => $voting,

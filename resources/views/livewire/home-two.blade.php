@@ -33,15 +33,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-21faa2b" data-id="21faa2b" data-element_type="column">
-                    <div class="elementor-widget-wrap elementor-element-populated">
-                        <div class="elementor-element elementor-element-ad36cfc elementor-widget elementor-widget-image" data-id="ad36cfc" data-element_type="widget" data-widget_type="image.default">
-                            <div class="elementor-widget-container">
-                                <img src="{{ $voting->image_url }}" title="foto-moraes" alt="foto-moraes" loading="lazy">
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
     </div>
