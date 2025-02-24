@@ -29,53 +29,40 @@ class Home extends Component
 
     public function render()
     {
+        // Define a chave de cache com base na URI ou usa a chave padrão "voting"
         $cacheName = $this->uri ? $this->uri : 'voting';
-
-        // Obtém a votação do cache ou busca no banco
-        $voting = Cache::remember($cacheName, 60, function () {
+    
+        // Obtém a votação do cache ou, se não existir, executa a consulta e gera o cache
+        $voting = Cache::remember($cacheName, 240, function () {
             return Voting::when($this->uri, function ($query) {
-                $query->where('voting_uri', $this->uri);
-            })
-            ->when(!$this->uri, function ($query) {
-                $query->where('main_vote', 1);
-            })
-            ->with(['votes.senator.party'])->first();
+                        $query->where('voting_uri', $this->uri);
+                    })
+                    ->when(!$this->uri, function ($query) {
+                        $query->where('main_vote', 1);
+                    })
+                    ->with(['votes.senator.party'])
+                    ->first();
         });
-
+    
         if (is_null($voting)) {
             return abort(404);
         }
-
-        // Verifica se há uma votação disponível
-        if (!$voting) {
-            return view('livewire.home', [
-                'voting'     => null,
-                'inFavor'    => collect(),
-                'indefinite' => collect(),
-                'against'    => collect(),
-            ])
-            ->layout('components.layouts.guest')
-            ->title('Votação não encontrada');
-        }
-
-        if ($this->selectedUf) {
-            // Filtra os votos com base na UF selecionada
-            $filteredVotes = $voting->votes->filter(function ($vote) {
-                // Certifique-se de que a relação está carregada corretamente
-                return isset($vote->senator) 
-                    && $vote->senator->uf === $this->selectedUf;
-            });
-        } else {
-            $filteredVotes = $voting->votes;
-        }
-        // Separa os votos por tipo
-        $inFavor = $filteredVotes->where('vote', 'Y')->sortBy(fn($vote) => $vote->senator->name ?? '');
+    
+        // Se houver filtro por UF, filtra os votos; caso contrário, usa todos
+        $filteredVotes = $this->selectedUf
+            ? $voting->votes->filter(function ($vote) {
+                return isset($vote->senator) && $vote->senator->uf === $this->selectedUf;
+            })
+            : $voting->votes;
+    
+        // Separa e ordena os votos por tipo
+        $inFavor    = $filteredVotes->where('vote', 'Y')->sortBy(fn($vote) => $vote->senator->name ?? '');
         $indefinite = $filteredVotes->where('vote', 'I')->sortBy(fn($vote) => $vote->senator->name ?? '');
-        $against = $filteredVotes->where('vote', 'N')->sortBy(fn($vote) => $vote->senator->name ?? '');
-
+        $against    = $filteredVotes->where('vote', 'N')->sortBy(fn($vote) => $vote->senator->name ?? '');
+    
+        // Seleciona a view (lembre-se de corrigir a condição de host, se necessário)
         $host = request()->getHost();
-
-        if ($host != 'deputados.anistia08dejaneiro.com.br' || $host != 'www.deputados.anistia08dejaneiro.com.br') {
+        if ($host != 'deputados.anistia08dejaneiro.com.br' && $host != 'www.deputados.anistia08dejaneiro.com.br') {
             return view('livewire.home-two', [
                 'title'      => $voting->name,
                 'voting'     => $voting,
@@ -96,6 +83,5 @@ class Home extends Component
             ->layout('components.layouts.guest')
             ->title($voting->name);
         }
-        
     }
 }
