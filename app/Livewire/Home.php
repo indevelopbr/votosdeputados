@@ -55,7 +55,7 @@ class Home extends Component
             })
             : $voting->votes;
     
-        $filteredVotes = $filteredVotes->take(10);
+        //$filteredVotes = $filteredVotes->take(10);
 
         // Separa e ordena os votos por tipo
         $inFavor    = $filteredVotes->where('vote', 'Y')->sortBy(fn($vote) => $vote->senator->name ?? '');
