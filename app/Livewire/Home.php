@@ -62,6 +62,7 @@ class Home extends Component
     
         // Seleciona a view (lembre-se de corrigir a condição de host, se necessário)
         $host = request()->getHost();
+        dd($host);
         if ($host === 'deputados.anistia08dejaneiro.com.br' && $host === 'www.deputados.anistia08dejaneiro.com.br') {
             return view('livewire.home-two', [
                 'title'      => $voting->name,
