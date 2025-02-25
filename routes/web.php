@@ -30,4 +30,4 @@ Route::view('profile', 'profile')
 require __DIR__.'/auth.php';
 
 Route::get('/', Home::class)->name('home');
-Route::get('/{uri}', Home::class)->name('home');
+Route::get('/{uri}', Home::class)->name('home-two');
