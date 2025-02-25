@@ -33,7 +33,7 @@ class Home extends Component
         $cacheName = $this->uri ? $this->uri : 'voting';
     
         // Obtém a votação do cache ou, se não existir, executa a consulta e gera o cache
-        $voting = Cache::remember($cacheName, 240, function () {
+        $voting = Cache::remember($cacheName, 1800, function () {
             return Voting::when($this->uri, function ($query) {
                         $query->where('voting_uri', $this->uri);
                     })

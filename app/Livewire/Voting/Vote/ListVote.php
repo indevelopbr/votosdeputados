@@ -48,7 +48,7 @@ class ListVote extends Component
 
             Cache::forget($cacheName); // remove a chave antiga
             $voting = Voting::with(['votes.senator.party'])->first();
-            Cache::put($cacheName, $voting, 60); // grava a nova versão por 60s
+            Cache::put($cacheName, $voting, 1800); // grava a nova versão por 60s
         }
     }
 
