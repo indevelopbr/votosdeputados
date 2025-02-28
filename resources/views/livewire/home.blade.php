@@ -8,8 +8,8 @@
                             <div class="elementor-widget-container">
                                 <h2 class="elementor-heading-title elementor-size-default">
                                     @if ($voting->id === 1)
-                                    <a href="https://votosdeputados.com.br/lula" target="_blank" style="color: white">
-                                        {{ __('Conheça a posição do seu Deputado no Impeachment de Lula') }}
+                                    <a href="https://www.change.org/p/impeachment-de-alexandre-de-moraes-pelo-bem-da-democracia" target="_blank" style="color: white">
+                                        {{ __('Assine a petição pública do impeachment do Alexandre de Moraes') }}
                                     </a>
                                     @endif
                                     @if ($voting->id === 2)
@@ -28,9 +28,9 @@
                             <div class="elementor-widget-container">
                                 <div class="elementor-button-wrapper">
                                     @if ($voting->id === 1)
-                                    <a class="elementor-button elementor-button-link elementor-size-sm" href="https://votosdeputados.com.br/lula" target="_blank">
+                                    <a class="elementor-button elementor-button-link elementor-size-sm" href="https://www.change.org/p/impeachment-de-alexandre-de-moraes-pelo-bem-da-democracia" target="_blank">
                                         <span class="elementor-button-content-wrapper">
-                                            <span class="elementor-button-text">ACESSAR</span>
+                                            <span class="elementor-button-text">ASSINAR</span>
                                         </span>
                                     </a>
                                     @endif
